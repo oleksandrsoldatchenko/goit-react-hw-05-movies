@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
+
 import { Container } from 'components/Container/Container';
+
 import Loader from 'components/Loader/Loader';
 import Searchbar from 'components/Searchbar/Searchbar';
 import MovieGallery from 'components/MovieGallery/MovieGallery';
+
 import { fetchMoviesByRequest } from 'services/fetchMovies';
 
 export default function MoviesPage() {
@@ -51,15 +55,13 @@ export default function MoviesPage() {
   };
 
   return (
-    <>
-      <Container>
-        <Searchbar onSearch={handleSearchSubmit} />
-        {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
-        {isLoading && <Loader/>}
-        {movies.length > 0 && (
-          <MovieGallery movies={movies} prevLocation={location} />
-        )}
-      </Container>
-    </>
+    <Container>
+      <Searchbar onSearch={handleSearchSubmit} />
+      {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
+      {isLoading && <Loader />}
+      {movies.length > 0 && (
+        <MovieGallery movies={movies} prevLocation={location} />
+      )}
+    </Container>
   );
 }

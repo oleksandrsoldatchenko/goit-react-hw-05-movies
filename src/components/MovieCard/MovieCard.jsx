@@ -6,8 +6,6 @@ export default function MovieCard({ movie }) {
   const { id, poster_path, title, release_date, popularity, overview, genres } =
     movie;
   const location = useLocation();
-  
-  console.log(poster_path);
 
   return (
     <>
