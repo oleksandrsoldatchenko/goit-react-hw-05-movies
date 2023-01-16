@@ -21,7 +21,7 @@ export default function MovieDetailsPage() {
       fetchMoviesById(movieId).then(data => {
         const {
           id,
-          backdrop_path,
+          poster_path,
           title,
           release_date,
           popularity,
@@ -30,7 +30,7 @@ export default function MovieDetailsPage() {
         } = data.data;
         const object = {
           id,
-          backdrop_path,
+          poster_path,
           title,
           release_date,
           popularity,
