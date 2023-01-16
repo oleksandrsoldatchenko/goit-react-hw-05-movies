@@ -1,0 +1,32 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.cast {
+  width: 1024px;
+}
+
+.castList_item {
+  width: 250px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  border: solid 1px black;
+  font-size: 12px;
+}
+
+.castList_itemText {
+  padding: 5px;
+}
+
+.castList_item:last-child {
+  margin-right: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  min-height: 150px;
+}
