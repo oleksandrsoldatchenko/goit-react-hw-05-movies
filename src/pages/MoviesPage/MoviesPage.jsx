@@ -55,7 +55,7 @@ export default function MoviesPage() {
       <Container>
         <Searchbar onSearch={handleSearchSubmit} />
         {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
-        {isLoading && <Loader color={'#3f51b5'} size={32} />}
+        {isLoading && <Loader/>}
         {movies.length > 0 && (
           <MovieGallery movies={movies} prevLocation={location} />
         )}
