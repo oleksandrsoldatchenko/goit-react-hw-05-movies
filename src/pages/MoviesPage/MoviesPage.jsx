@@ -29,9 +29,8 @@ export default function MoviesPage() {
       try {
         fetchMoviesByRequest(searchRequest).then(data => {
           if (!data.data.results.length) {
-            return toast.error(
-              'There is no movies found with that search request'
-            );
+            alert('There is no movies found with that search request');
+            return;
           }
           const mappedMovies = data.data.results.map(({ id, title }) => ({
             id,

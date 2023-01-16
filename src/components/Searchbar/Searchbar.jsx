@@ -1,54 +1,42 @@
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-const SearchBar = ({ onSubmit }) => {
-  const [name, setName] = useState('');
+const Searchbar = ({ onSearch }) => {
+  const [searchRequest, setSearchRequest] = useState('');
 
-  // Забираємо дані з імпута і перекидаємо в стейт
-  const handleNameChange = e => {
-    const newName = e.currentTarget.value.toLowerCase();
-    setName(newName);
+  const handleRequestChange = event => {
+    setSearchRequest(event.currentTarget.value.toLowerCase());
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log('click');
-    const userInput = name.trim();
-    if (userInput === '') {
-      toast.error('fill in the fields');
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (searchRequest.trim() === '') {
+      alert('Search field is empty!');
       return;
     }
-
-    onSubmit(userInput);
-    // Очищуємо інпут
-    cleanInput();
-  };
-
-  const cleanInput = () => {
-    setName('');
+    onSearch(searchRequest);
+    setSearchRequest('');
   };
 
   return (
-    <>
-      <header>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Search"
-            value={name}
-            onChange={handleNameChange}
-          />
-          <button type="submit">Search</button>
-        </form>
-      </header>
-    </>
+    <header>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="searchRequest"
+          value={searchRequest}
+          onChange={handleRequestChange}
+          autoComplete="off"
+          autoFocus
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
   );
 };
 
-
-SearchBar.propTypes = {
+Searchbar.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
 
-export default SearchBar;
+export default Searchbar;
