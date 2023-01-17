@@ -24,7 +24,7 @@ export default function MovieDetailsPage() {
           poster_path,
           title,
           release_date,
-          popularity,
+          vote_average,
           overview,
           genres,
         } = data.data;
@@ -33,7 +33,7 @@ export default function MovieDetailsPage() {
           poster_path,
           title,
           release_date,
-          popularity,
+          vote_average,
           overview,
           genres,
         };

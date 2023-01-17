@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './MovieCard.module.css';
 
 export default function MovieCard({ movie }) {
-  const { id, poster_path, title, release_date, popularity, overview, genres } =
+  const { id, poster_path, title, release_date, vote_average, overview, genres } =
     movie;
+
+  const voteScore = vote_average.toFixed(1) * 10;
+  
   const location = useLocation();
 
   return (
@@ -22,7 +25,7 @@ export default function MovieCard({ movie }) {
             <span>{title}</span>
             <span>({getRelizeYear(release_date)})</span>
           </h2>
-          <p> User score: {getUserScore(popularity)} %</p>
+          <p> User score: {getUserScore(voteScore)} %</p>
           <h3>Overview</h3>
           <p>{overview}</p>
           <h3>Genres</h3>
@@ -54,7 +57,7 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
-    popularity: PropTypes.number.isRequired,
+    vote_average: PropTypes.number.isRequired,
     overview: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(
       PropTypes.shape({
